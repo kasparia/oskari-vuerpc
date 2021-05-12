@@ -2,18 +2,28 @@
   <div>
     <h2>{{ title }}</h2>
     <p>
+      Drawing requests can be used to mark down and measure different locations on the map. With different settings you can set the behaviour of the request
+      from drawing different plain pre-defined shapes to drawing custom styled measurement of the marked area. These pre-defined shapes consist of shapes like polygon, 
+      circle, point, box, square or line. <br><br>
       To start drawing send <InlineCode>StartDrawingRequest</InlineCode>.<br>
-      <RunExampleButton @click="startDrawing">Activate drawing mode</RunExampleButton>
+      <RunExampleButton @click="startDrawing()">Activate drawing mode</RunExampleButton><br>
+      <RunExampleButton @click="startDrawing(true)">Activate drawing mode with measurement</RunExampleButton>
       <br>
       <DocumentationLink type="request" apiDoc="mapping/drawtools/request/startdrawingrequest.md">Documentation for DrawTools.StartDrawingRequest</DocumentationLink>
       <CodeSnippet>
         var data = ['my functionality id', 'Polygon'];
         channel.postRequest('DrawTools.StartDrawingRequest', data);
       </CodeSnippet>
+      To start drawing with measurement turned on, send drawing request with options parameter as object containing <InlineCode>showMeasureOnMap</InlineCode> as true. 
+      <CodeSnippet>
+        var data = ['my functionality id', 'Polygon', { showMeasureOnMap: true }];
+        channel.postRequest('DrawTools.StartDrawingRequest', data);
+      </CodeSnippet>
     </p>
 
     <p>
-      To stop current drawing progress send <InlineCode>StopDrawingRequest</InlineCode>.
+      To stop current drawing progress send <InlineCode>StopDrawingRequest</InlineCode>. StopDrawingRequests should be set up to be initiated for example by
+      a button positioned next to map to ensure application working flawlessly.<br>
       <RunExampleButton @click="stopDrawing">Disable drawing mode</RunExampleButton>
       <br>
       <DocumentationLink type="request" apiDoc="mapping/drawtools/request/stopdrawingrequest.md">Documentation for DrawTools.StopDrawingRequest</DocumentationLink>
@@ -104,8 +114,14 @@ export default {
     }
   },
   methods: {
-    startDrawing () {
-      const data = ['my functionality id', 'Polygon'];
+    startDrawing (showMeasurement = false) {
+      const data = [
+        'my functionality id',
+        'Polygon',
+        {
+          showMeasureOnMap: showMeasurement
+        }
+      ];
       this.$root.channel.postRequest('DrawTools.StartDrawingRequest', data);
       this.$root.channel.log('DrawTools.StartDrawingRequest posted with data:', data);
     },
