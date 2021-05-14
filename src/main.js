@@ -9,7 +9,6 @@ import RunExampleButton from './components/ui-components/run_example_button.vue'
 import InlineCodeSnippet from './components/ui-components/inline_code_snippet.vue';
 import VueRouter from 'vue-router';
 
-
 // Declare these as common components so pages don't need to declare these repeatedly
 // as they are used in all pages
 // TODO: remove code-component when its not used anymore
