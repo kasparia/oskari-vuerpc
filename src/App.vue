@@ -131,9 +131,6 @@
     //font-size: calc(0.60rem + 1.0vh);
     padding: 0 1em;
 }
-.row {
-  // height:800px !important;
-}
 .full-height-panel {
   height: 98% !important;
 }
