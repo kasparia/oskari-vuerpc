@@ -9,16 +9,16 @@ import featuresInfo from './features.info.vue';
 import featuresZoom from '../../components/requests/features.zoom.vue';
 
 export default {
-  name: 'Features',
-  pages: [
-    featuresAdd,
-    featuresLayer,
-    featuresLayerScale,
-    featuresUpdateStyle,
-    featuresOrder,
-    features,
-    featureEvent,
-    featuresInfo,
-    featuresZoom
-  ]
+    name: 'Features',
+    pages: [
+        featuresAdd,
+        featuresLayer,
+        featuresLayerScale,
+        featuresUpdateStyle,
+        featuresOrder,
+        features,
+        featureEvent,
+        featuresInfo,
+        featuresZoom,
+    ]
 };

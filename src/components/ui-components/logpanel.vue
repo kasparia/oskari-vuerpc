@@ -35,7 +35,6 @@ export default {
   border:0.5px solid #D9D9D9;
   overflow-y: auto;
 }
-
 pre {
   display: block;
   padding: 9.5px;
